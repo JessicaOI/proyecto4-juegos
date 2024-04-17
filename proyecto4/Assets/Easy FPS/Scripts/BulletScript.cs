@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BulletScript : MonoBehaviour {
 
+	public int damage = 25;
 	[Tooltip("Furthest distance bullet will look for target")]
 	public float maxDistance = 1000000;
 	RaycastHit hit;
@@ -20,22 +21,30 @@ public class BulletScript : MonoBehaviour {
 	* bullet creates a raycast which searches for corresponding tags.
 	* If raycast finds somethig it will create a decal of corresponding tag.
 	*/
-	void Update () {
+	void Update()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, ~ignoreLayer))
+        {
+            if (decalHitWall && hit.transform.CompareTag("LevelPart"))
+            {
+                Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
+            }
+            else if (hit.transform.CompareTag("Dummie")) // Cambiado de transform.tag a transform.CompareTag
+            {
+                Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(damage);
+                }
+            }
 
-		if(Physics.Raycast(transform.position, transform.forward,out hit, maxDistance, ~ignoreLayer)){
-			if(decalHitWall){
-				if(hit.transform.tag == "LevelPart"){
-					Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
-					Destroy(gameObject);
-				}
-				if(hit.transform.tag == "Dummie"){
-					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-					Destroy(gameObject);
-				}
-			}		
-			Destroy(gameObject);
-		}
-		Destroy(gameObject, 0.1f);
-	}
-
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject, 0.1f);
+        }
+    }
 }

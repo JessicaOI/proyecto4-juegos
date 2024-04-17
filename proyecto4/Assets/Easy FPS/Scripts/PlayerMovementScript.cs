@@ -14,6 +14,11 @@ public class PlayerMovementScript : MonoBehaviour {
 	[Tooltip("Position of the camera inside the player")]
 	[HideInInspector]public Vector3 cameraPosition;
 
+	public GameObject standingImage;
+    public GameObject walkingImage;
+    public GameObject sprintingImage;
+    public GameObject crouchingImage;
+    public GameObject canvas;
 	/*
 	 * Getting the Players rigidbody component.
 	 * And grabbing the mainCamera from Players child transform.
@@ -99,12 +104,27 @@ public class PlayerMovementScript : MonoBehaviour {
 
 		WalkingSound ();
 
+		UpdateCanvasImage();
+
 
 	}//end update
 
 	/*
 	* Checks if player is grounded and plays the sound accorindlgy to his speed
 	*/
+	void UpdateCanvasImage(){
+        // Determina el estado del jugador
+        bool isWalking = Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0;
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift);
+        bool isCrouching = Input.GetKey(KeyCode.C);
+
+        // Activa/desactiva las imágenes en el canvas según el estado del jugador
+        standingImage.SetActive(!isWalking && !isSprinting && !isCrouching);
+        walkingImage.SetActive(isWalking && !isSprinting && !isCrouching);
+        sprintingImage.SetActive(isSprinting && !isCrouching);
+        crouchingImage.SetActive(isCrouching);
+    }
+	
 	void WalkingSound(){
 		if (_walkSound && _runSound) {
 			if (RayCastGrounded ()) { //for walk sounsd using this because suraface is not straigh			
