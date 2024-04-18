@@ -391,8 +391,11 @@ MonoBehaviour:
   closeImage: {fileID: 1585142918}
   veryCloseImage: {fileID: 53593995}
   playerTransform: {fileID: 538009152}
-  farDistance: 10
-  closeDistance: 5
+  farDistance: 15
+  closeDistance: 10
+  moveSpeed: 3
+  chargeSpeed: 5
+  chargeDelay: 1
 --- !u!114 &117096586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2339,11 +2342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479812, guid: c391f12a928274acab8576bb6030641d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.55
+      value: 88.94
       objectReference: {fileID: 0}
     - target: {fileID: 479812, guid: c391f12a928274acab8576bb6030641d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.92
+      value: 23.01
       objectReference: {fileID: 0}
     - target: {fileID: 479812, guid: c391f12a928274acab8576bb6030641d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2413,6 +2416,10 @@ PrefabInstance:
       propertyPath: walkingImage
       value: 
       objectReference: {fileID: 1596061211}
+    - target: {fileID: 11415148, guid: c391f12a928274acab8576bb6030641d, type: 3}
+      propertyPath: whistleSound
+      value: 
+      objectReference: {fileID: 1564140236}
     - target: {fileID: 11415148, guid: c391f12a928274acab8576bb6030641d, type: 3}
       propertyPath: standingImage
       value: 
@@ -2721,6 +2728,11 @@ RectTransform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3b2e06cc32571ee499c3dcfb60452c2b, type: 3}
   m_PrefabInstance: {fileID: 522904619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1564140236 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7760848887081319990, guid: c391f12a928274acab8576bb6030641d, type: 3}
+  m_PrefabInstance: {fileID: 1457322092}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1579251399
 PrefabInstance:

@@ -97,6 +97,14 @@ public class PlayerMovementScript : MonoBehaviour {
 	*/
 	void Update(){
 		
+		// Verifica si se presiona la tecla Q para reproducir el sonido de silbido
+		if (Input.GetKeyDown(KeyCode.Q)) {
+			if (whistleSound) {
+				whistleSound.Play();
+			} else {
+				Debug.LogError("Missing whistle sound AudioSource reference!");
+			}
+		}
 
 		Jumping ();
 
@@ -358,5 +366,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	public AudioSource _walkSound;
 	[Tooltip("Run Sound player makes.")]
 	public AudioSource _runSound;
+	[Tooltip("Whistle sound when Q key is pressed.")]
+	public AudioSource whistleSound; // Agrega esta línea para el sonido de silbido
 }
 

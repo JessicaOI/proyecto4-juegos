@@ -217,7 +217,7 @@ public class GunScript : MonoBehaviour {
 	*/
 	void MeeleAttack(){	
 
-		if(Input.GetKeyDown(KeyCode.Q) && !meeleAttack){			
+		if(Input.GetKeyDown(KeyCode.F) && !meeleAttack){			
 			StartCoroutine("AnimationMeeleAttack");
 		}
 	}
