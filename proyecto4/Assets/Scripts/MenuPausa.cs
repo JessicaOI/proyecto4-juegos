@@ -2,67 +2,105 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuPausa : MonoBehaviour
 {
-    // Referencia al menú de pausa UI
-    public GameObject menuPausaUI;
-    public static bool JuegoPausado = false;
+    [SerializeField] private GameObject botonPausa;
+    [SerializeField] private GameObject menuPausa;
+    [SerializeField] private Button botonReanudar;
+    [SerializeField] private Button botonReiniciar;
+    [SerializeField] private Button botonCerrar;
 
+    private bool juegopausado = false;
 
-    void Update()
+    private void Start()
     {
-        // Detectar cuando el jugador presiona la tecla Esc
+        // Configurar eventos de los botones
+        botonReanudar.onClick.AddListener(Reanudar);
+        botonReiniciar.onClick.AddListener(Reiniciar);
+        botonCerrar.onClick.AddListener(Cerrar);
+    }
+
+    private void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (JuegoPausado)
+            if (juegopausado)
             {
                 Reanudar();
             }
             else
             {
-                Pausar();
+                Pausa();
+            }
+        }
+    }
+
+    public void Pausa()
+    {
+        // Pausar otros scripts antes de mostrar el menú de pausa
+        PausarScripts();
+
+        // Mostrar el menú de pausa después de pausar otros scripts
+        botonPausa.SetActive(false);
+        menuPausa.SetActive(true);
+
+        // Establecer el estado de pausa del juego
+        juegopausado = true;
+    }
+
+    private void PausarScripts()
+    {
+        // Obtener todos los scripts en la escena
+        MonoBehaviour[] scripts = FindObjectsOfType<MonoBehaviour>();
+
+        // Iterar sobre los scripts y desactivarlos, excepto este script y el de la cámara
+        foreach (MonoBehaviour script in scripts)
+        {
+            if (script != this && script.GetType() != typeof(Camera))
+            {
+                script.enabled = false;
             }
         }
     }
 
     public void Reanudar()
     {
-        menuPausaUI.SetActive(false);
-        Time.timeScale = 1f;
-        JuegoPausado = false;
+        // Reanudar otros scripts antes de ocultar el menú de pausa
+        ReanudarScripts();
 
-        // Ocultar y bloquear el cursor al reanudar el juego
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Ocultar el menú de pausa después de reanudar otros scripts
+        menuPausa.SetActive(false);
+        botonPausa.SetActive(true);
+
+        // Establecer el estado de pausa del juego
+        juegopausado = false;
     }
 
-    public void Pausar()
+    private void ReanudarScripts()
     {
-        menuPausaUI.SetActive(true);
-        Time.timeScale = 0f;
-        JuegoPausado = true;
+        // Obtener todos los scripts en la escena
+        MonoBehaviour[] scripts = FindObjectsOfType<MonoBehaviour>();
 
-        // Mostrar y desbloquear el cursor al pausar el juego
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // Iterar sobre los scripts y activarlos, excepto este script y el de la cámara
+        foreach (MonoBehaviour script in scripts)
+        {
+            if (script != this && script.GetType() != typeof(Camera))
+            {
+                script.enabled = true;
+            }
+        }
     }
 
-
-    // Función para reiniciar la escena
     public void Reiniciar()
     {
-        // Carga la escena actualmente activa (reinicia)
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1f; // Asegurarse de reanudar el tiempo del juego
-        JuegoPausado = false; // Restablecer la pausa
     }
 
-    // Función para salir del juego
-    public void Salir()
+    public void Cerrar()
     {
-        Debug.Log("Saliendo del juego...");
         Application.Quit();
     }
-
 }
