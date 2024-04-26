@@ -43,7 +43,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Patroling()
     {
-        myAnim.ResetTrigger("Attack 1");
+        myAnim.ResetTrigger("Attack1");
         myAnim.SetBool("WalkForward", false);
         if (!walkPointSet) SearchWalkPoint();
 
@@ -72,7 +72,7 @@ public class EnemyAi : MonoBehaviour
     private void ChasePlayer()
     {
         myAnim.SetBool("WalkForward",false);
-        myAnim.SetTrigger("Attack 1");
+        myAnim.SetTrigger("Attack1");
         agent.SetDestination(player.position);
     }
 
@@ -80,20 +80,28 @@ public class EnemyAi : MonoBehaviour
     {
         // Ensure the enemy doesn't move while attacking
         agent.SetDestination(transform.position);
-
         transform.LookAt(player);
-
 
         if (!alreadyAttacked)
         {
-            myAnim.ResetTrigger("Attack 1");
-            // Simulate damage to the player
-            print("Attack: Damage to player");
+            myAnim.ResetTrigger("Attack1");
+
+            // Get the PlayerHealth component and apply damage
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(20); // Assuming 20 is the damage value you want to inflict
+            }
+            else
+            {
+                Debug.LogWarning("PlayerHealth component not found on the Player.");
+            }
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
 
     private void ResetAttack()
     {
