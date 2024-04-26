@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.51114815, g: 0.5688079, b: 0.6249547, a: 1}
+  m_IndirectSpecularColor: {r: 0.51117104, g: 0.5688241, b: 0.62496424, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -728,7 +728,7 @@ MonoBehaviour:
   walkPointRange: 5
   timeBetweenAttacks: 0.5
   sightRange: 20
-  attackRange: 5
+  attackRange: 1
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1001 &143675249
@@ -4414,11 +4414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087f60580391a694e8018a07bb533b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botonPausa: {fileID: 862601305}
-  menuPausa: {fileID: 972420730}
-  botonReanudar: {fileID: 314319442}
-  botonReiniciar: {fileID: 72004038}
-  botonCerrar: {fileID: 81145158}
+  menuPausaUI: {fileID: 972420730}
 --- !u!4 &1554321768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3b2e06cc32571ee499c3dcfb60452c2b, type: 3}
