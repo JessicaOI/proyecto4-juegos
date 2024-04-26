@@ -21,10 +21,13 @@ public class EnemyAi : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public Animator myAnim;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        myAnim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -40,6 +43,8 @@ public class EnemyAi : MonoBehaviour
 
     private void Patroling()
     {
+        myAnim.ResetTrigger("Attack 1");
+        myAnim.SetBool("WalkForward", false);
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -66,6 +71,8 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
+        myAnim.SetBool("WalkForward",false);
+        myAnim.SetTrigger("Attack 1");
         agent.SetDestination(player.position);
     }
 
@@ -76,8 +83,10 @@ public class EnemyAi : MonoBehaviour
 
         transform.LookAt(player);
 
+
         if (!alreadyAttacked)
         {
+            myAnim.ResetTrigger("Attack 1");
             // Simulate damage to the player
             print("Attack: Damage to player");
 
