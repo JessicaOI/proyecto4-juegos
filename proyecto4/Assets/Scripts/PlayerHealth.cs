@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
     public Image redImage; // Referencia a la imagen roja de la UI
+    public GameObject deathText;
 
     void Start()
     {
         currentHealth = maxHealth;
         UpdateHealthImage();
+        deathText.SetActive(false);
     }
 
     public void TakeDamage(int damage)
@@ -32,9 +36,14 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        // Aquí puedes añadir cualquier efecto de muerte que quieras para el jugador
         Debug.Log("Player has died!");
-        // Opcionalmente, destruye el objeto jugador si es necesario
-        // Destroy(gameObject);
+        deathText.SetActive(true);
+        StartCoroutine(ReloadSceneAfterDelay(3f)); // Inicia la corutina con un retraso de 3 segundos
+    }
+
+    System.Collections.IEnumerator ReloadSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Espera el tiempo definido
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Recarga la escena actual
     }
 }
