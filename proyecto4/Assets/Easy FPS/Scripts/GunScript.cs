@@ -436,7 +436,7 @@ public class GunScript : MonoBehaviour {
 
 				RecoilMath();
 
-				waitTillNextFire = 1;
+				waitTillNextFire = 2;
 				bulletsInTheGun -= 1;
 			}
 				
