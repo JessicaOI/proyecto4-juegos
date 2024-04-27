@@ -4,36 +4,46 @@ using System.Collections;
 
 public class MouseLookScript : MonoBehaviour {
 
-	[HideInInspector]
-	public Transform myCamera;
-	/*
-	 * Hiding the cursor.
-	 */
-	void Awake(){
-		Cursor.lockState = CursorLockMode.Locked;
-		myCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
-	}
+    [HideInInspector]
+    public Transform myCamera;
+    [Tooltip("Object to be thrown")]
+    public GameObject throwableItem;
+    [Tooltip("Force with which the item will be thrown")]
+    public float throwForce = 10f;
 
-	/*
-	* Locking the mouse if pressing L.
-	* Triggering the headbob camera omvement if player is faster than 1 of speed
-	*/
-	void  Update(){
+    void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        myCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+    }
 
-		MouseInputMovement();
+    void Update()
+    {
+        MouseInputMovement();
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ThrowItem();
+        }
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        if (GetComponent<PlayerMovementScript>().currentSpeed > 1)
+            HeadMovement();
+    }
 
-		if (Input.GetKeyDown (KeyCode.L)) {
-			Cursor.lockState = CursorLockMode.Locked;
+    private void ThrowItem()
+    {
+        if (throwableItem != null)
+        {
+            GameObject item = Instantiate(throwableItem, myCamera.position, myCamera.rotation);
+            Rigidbody itemRigidbody = item.AddComponent<Rigidbody>();
+            itemRigidbody.AddForce(myCamera.forward * throwForce, ForceMode.VelocityChange);
+        }
+    }
 
-		}
-		deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-
-		if(GetComponent<PlayerMovementScript>().currentSpeed > 1)
-			HeadMovement ();
-
-	}
-
-	[Header("Z Rotation Camera")]
+    [Header("Z Rotation Camera")]
 	[HideInInspector] public float timer;
 	[HideInInspector] public int int_timer;
 	[HideInInspector] public float zRotation;

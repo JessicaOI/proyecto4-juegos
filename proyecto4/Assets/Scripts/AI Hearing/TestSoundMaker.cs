@@ -19,6 +19,8 @@ namespace GamePlay
 
             var sound = new Sound(transform.position, soundRange, soundType);
 
+            //print($"Sound: with pos {sound.pos} and range {sound.range} created!");
+
             Sounds.MakeSound(sound);
         }
     }
