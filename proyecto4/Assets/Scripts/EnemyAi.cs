@@ -23,6 +23,9 @@ public class EnemyAi : MonoBehaviour
 
     public Animator myAnim;
 
+    // Sound Response
+    public bool isRespondingToSound = false;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -32,6 +35,16 @@ public class EnemyAi : MonoBehaviour
 
     private void Update()
     {
+        if (isRespondingToSound)
+        {
+            if (Vector3.Distance(transform.position, agent.destination) < 1f)
+            {
+                isRespondingToSound = false; // Reset when the sound point is reached
+                myAnim.SetBool("WalkForward", true); // Ensure the walking animation stops
+            }
+            return; // Skip the rest of the update while responding to sound
+        }
+
         // Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -44,7 +57,7 @@ public class EnemyAi : MonoBehaviour
     private void Patroling()
     {
         myAnim.ResetTrigger("Attack1");
-        myAnim.SetBool("WalkForward", false);
+        myAnim.SetBool("WalkForward", true);
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -71,8 +84,8 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
-        myAnim.SetBool("WalkForward",false);
-        myAnim.SetTrigger("Attack1");
+        myAnim.SetBool("WalkForward", true);
+        myAnim.ResetTrigger("Attack1");
         agent.SetDestination(player.position);
     }
 
@@ -84,7 +97,7 @@ public class EnemyAi : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            myAnim.ResetTrigger("Attack1");
+            myAnim.SetTrigger("Attack1");
 
             // Get the PlayerHealth component and apply damage
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
@@ -101,7 +114,6 @@ public class EnemyAi : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
-
 
     private void ResetAttack()
     {
@@ -120,4 +132,10 @@ public class EnemyAi : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void RespondToSound(Vector3 soundPosition)
+    {
+        isRespondingToSound = true;
+        agent.SetDestination(soundPosition);
+        myAnim.SetBool("WalkForward", true); // Make sure to play the walk animation
+    }
 }
