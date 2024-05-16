@@ -7,6 +7,9 @@ public class EnemyAi : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
+    public bool PlayerInSightRange { get { return playerInSightRange; } }
+    public bool PlayerInAttackRange { get { return playerInAttackRange; } }
+
 
     // Patroling
     public Vector3 walkPoint;
