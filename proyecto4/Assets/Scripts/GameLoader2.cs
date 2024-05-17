@@ -7,8 +7,7 @@ public class GameLoader2 : MonoBehaviour
 {
     void OnEnable() 
     {
-        MenuInicial.Cinematica2Completada();
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        SceneManager.LoadScene("Menu2", LoadSceneMode.Single);
     }
 }
 
