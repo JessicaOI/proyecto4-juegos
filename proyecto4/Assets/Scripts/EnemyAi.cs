@@ -10,7 +10,6 @@ public class EnemyAi : MonoBehaviour
     public bool PlayerInSightRange { get { return playerInSightRange; } }
     public bool PlayerInAttackRange { get { return playerInAttackRange; } }
 
-
     // Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -60,11 +59,26 @@ public class EnemyAi : MonoBehaviour
     private void Patroling()
     {
         myAnim.ResetTrigger("Attack1");
-        myAnim.SetBool("WalkForward", true);
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
-            agent.SetDestination(walkPoint);
+        {
+            // Rotate towards the walk point smoothly
+            Vector3 direction = (walkPoint - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+
+            // Move towards walk point if facing it closely enough
+            if (Vector3.Angle(transform.forward, direction) < 10f)
+            {
+                agent.SetDestination(walkPoint);
+                myAnim.SetBool("WalkForward", true);
+            }
+            else
+            {
+                myAnim.SetBool("WalkForward", false);
+            }
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -75,8 +89,8 @@ public class EnemyAi : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        // Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        // Attempt to find a point in front of the enemy
+        float randomZ = Random.Range(0, walkPointRange); // Changed to 0 to walkPointRange to avoid backward movement
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
