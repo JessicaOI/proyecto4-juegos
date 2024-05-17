@@ -12,9 +12,6 @@ public class MenuPausa : MonoBehaviour
     [SerializeField] private Button botonReiniciar;
     [SerializeField] private Button botonCerrar;
 
-    [SerializeField] private GameObject imagenInicio;
-    private bool inicioPendiente = true; // Indica si el inicio está pendiente
-
     private bool juegopausado = false;
 
     private void Start()
@@ -23,27 +20,10 @@ public class MenuPausa : MonoBehaviour
         botonReanudar.onClick.AddListener(Reanudar);
         botonReiniciar.onClick.AddListener(Reiniciar);
         botonCerrar.onClick.AddListener(Cerrar);
-
-        // Desactivar el menú de pausa al inicio
-        menuPausa.SetActive(false);
-
-        // Mostrar la imagen de inicio
-        imagenInicio.SetActive(true);
-
-        // Pausar el juego al inicio
-        Time.timeScale = 0f;
     }
 
     private void Update()
     {
-        if (inicioPendiente && Input.GetKeyDown(KeyCode.Return))
-        {
-            // Al presionar Enter, ocultar la imagen de inicio, reanudar el juego y marcar el inicio como completado
-            imagenInicio.SetActive(false);
-            Reanudar();
-            inicioPendiente = false;
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (juegopausado)

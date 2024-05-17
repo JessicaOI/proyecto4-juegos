@@ -7,6 +7,6 @@ public class GameLoader : MonoBehaviour
 {
     void OnEnable() 
     {
-        SceneManager.LoadScene("Scene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Nivel1", LoadSceneMode.Single);
     }
 }
