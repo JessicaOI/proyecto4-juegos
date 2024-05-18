@@ -30,13 +30,25 @@ public class EnemyAi : MonoBehaviour
 
     // Audio
     private AudioSource attackAudioSource;
+    private AudioSource chaseAudioSource; // Nuevo AudioSource para persecución
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         myAnim = GetComponent<Animator>();
-        attackAudioSource = GetComponent<AudioSource>(); // Get the AudioSource component
+
+        // Obtener ambos AudioSource
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length > 1)
+        {
+            attackAudioSource = audioSources[0];
+            chaseAudioSource = audioSources[1];
+        }
+        else
+        {
+            Debug.LogError("Not enough AudioSources attached to the enemy.");
+        }
     }
 
     private void Update()
@@ -108,6 +120,12 @@ public class EnemyAi : MonoBehaviour
         myAnim.SetBool("WalkForward", true);
         myAnim.ResetTrigger("Attack1");
         agent.SetDestination(player.position);
+
+        // Play chase sound if not already playing
+        if (chaseAudioSource != null && !chaseAudioSource.isPlaying)
+        {
+            chaseAudioSource.Play();
+        }
     }
 
     private void AttackPlayer()
@@ -119,10 +137,6 @@ public class EnemyAi : MonoBehaviour
         if (!alreadyAttacked)
         {
             myAnim.SetTrigger("Attack1");
-
-
-            // Debug message to indicate attack attempt
-            Debug.Log("Attempting to play attack audio.");
 
             // Play attack sound with debug messages
             if (attackAudioSource != null)
@@ -146,7 +160,7 @@ public class EnemyAi : MonoBehaviour
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(20); // Assuming 20 is the damage value you want to inflict 
+                playerHealth.TakeDamage(20); // Assuming 20 is the damage value you want to inflict
             }
             else
             {
