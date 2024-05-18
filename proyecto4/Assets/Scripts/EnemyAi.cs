@@ -28,11 +28,15 @@ public class EnemyAi : MonoBehaviour
     // Sound Response
     public bool isRespondingToSound = false;
 
+    // Audio
+    private AudioSource attackAudioSource;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         myAnim = GetComponent<Animator>();
+        attackAudioSource = GetComponent<AudioSource>(); // Get the AudioSource component
     }
 
     private void Update()
@@ -116,11 +120,33 @@ public class EnemyAi : MonoBehaviour
         {
             myAnim.SetTrigger("Attack1");
 
+
+            // Debug message to indicate attack attempt
+            Debug.Log("Attempting to play attack audio.");
+
+            // Play attack sound with debug messages
+            if (attackAudioSource != null)
+            {
+                if (attackAudioSource.clip != null)
+                {
+                    attackAudioSource.Play();
+                    Debug.Log("Attack audio played.");
+                }
+                else
+                {
+                    Debug.LogWarning("Attack audio source is assigned but no audio clip found.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No audio source assigned to attackAudioSource.");
+            }
+
             // Get the PlayerHealth component and apply damage
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(20); // Assuming 20 is the damage value you want to inflict
+                playerHealth.TakeDamage(20); // Assuming 20 is the damage value you want to inflict 
             }
             else
             {
