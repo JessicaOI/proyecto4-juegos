@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &259895578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &409384269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &690626336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &823865170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &934373699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &947310171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,7 +686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1243719047
 RectTransform:
   m_ObjectHideFlags: 0
@@ -761,7 +761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1255167727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,7 +836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1255425826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,7 +915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1414051362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,7 +995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1438100075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,73 +1205,14 @@ GameObject:
   - component: {fileID: 1559903261}
   - component: {fileID: 1559903260}
   - component: {fileID: 1559903259}
-  - component: {fileID: 1559903258}
+  - component: {fileID: 1559903263}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!320 &1559903258
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559903257}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 8714681431121907793, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1255425825}
-  - key: {fileID: 7129228016420211522, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1438100074}
-  - key: {fileID: 2340563123707447545, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 2071496687}
-  - key: {fileID: 7212019648024468110, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 690626335}
-  - key: {fileID: -3306148270084182861, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 6295609739203257542, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1559591562}
-  - key: {fileID: 5098977356551233831, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -8536449245169637280, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 947310170}
-  - key: {fileID: 2505339583785069551, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1601747366}
-  - key: {fileID: 1521983087470917122, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1414051361}
-  - key: {fileID: -8638382385936029702, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 409384268}
-  - key: {fileID: 3111295729901209677, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 934373698}
-  - key: {fileID: -6323714743564035273, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 2075760707}
-  - key: {fileID: -6603353488420861678, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 259895577}
-  - key: {fileID: -7808619507186001913, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 2119126462}
-  - key: {fileID: 857446702157558578, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 823865169}
-  - key: {fileID: 719779511260059242, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1243719046}
-  - key: {fileID: -1536139905055047960, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1880876745}
-  - key: {fileID: -2713641588107842257, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1255167726}
-  - key: {fileID: -9164120989730602157, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 6159988776503408617, guid: d665188f06a36304298245dfcbafbe5e, type: 2}
-    value: {fileID: 1965196395}
-  m_ExposedReferences:
-    m_References: []
 --- !u!114 &1559903259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,6 +1313,68 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!320 &1559903263
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559903257}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -5753465619658942902, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1255425825}
+  - key: {fileID: 5144682294608892862, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1438100074}
+  - key: {fileID: 7487896057056138866, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 2071496687}
+  - key: {fileID: 8426249546034265259, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 690626335}
+  - key: {fileID: -4850913576502269507, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 259895577}
+  - key: {fileID: 696908740838236849, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 947310170}
+  - key: {fileID: 6869255501563525074, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 2119126462}
+  - key: {fileID: -8756172251869792264, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1601747366}
+  - key: {fileID: 1776003467394248279, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 823865169}
+  - key: {fileID: 1041164574297754558, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -5757480644802125837, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 3313826983960465488, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 2075760707}
+  - key: {fileID: -3594966004039570615, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1243719046}
+  - key: {fileID: -1215373880517033176, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1414051361}
+  - key: {fileID: 7581906584177060537, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1880876745}
+  - key: {fileID: 1066336191114258993, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 409384268}
+  - key: {fileID: 4776096185000247609, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1255167726}
+  - key: {fileID: -3293590931807729182, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 934373698}
+  - key: {fileID: -3585398891955558702, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1965196395}
+  - key: {fileID: 8561366199315629096, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 1559591562}
+  - key: {fileID: 7777876013348407770, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4228778948455474200, guid: fd0c3592d0c02024e930778b18457300, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References:
+    - 19f408181204d5842baa26bd7d856eaf: {fileID: 1255425825}
 --- !u!1 &1601747366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1601747367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1469,7 +1472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1880876746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1544,7 +1547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1965196397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1619,7 +1622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2071496688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1698,7 +1701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2075760708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,7 +1781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2119126463
 MonoBehaviour:
   m_ObjectHideFlags: 0

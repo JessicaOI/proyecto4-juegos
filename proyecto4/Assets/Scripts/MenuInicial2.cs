@@ -18,9 +18,9 @@ public class MenuInicial2 : MonoBehaviour
         panelSeleccionNiveles.SetActive(false);
 
         botonSeleccionNiveles.onClick.AddListener(AbrirPanelSeleccionNiveles);
-        botonNivel1.onClick.AddListener(() => CargarNivel(1));
-        botonNivel2.onClick.AddListener(() => CargarNivel(2));
-        botonNivel3.onClick.AddListener(() => CargarNivel(3));
+        botonNivel1.onClick.AddListener(() => CargarNivel("Nivel1"));
+        botonNivel2.onClick.AddListener(() => CargarNivel("Cinematica3"));
+        botonNivel3.onClick.AddListener(() => CargarNivel("Cinematica5"));
         botonCerrarPanel.onClick.AddListener(CerrarPanelSeleccionNiveles);
 
         // Ajustes iniciales del cursor
@@ -38,9 +38,9 @@ public class MenuInicial2 : MonoBehaviour
         panelSeleccionNiveles.SetActive(false);
     }
 
-    private void CargarNivel(int nivelIndex)
+    private void CargarNivel(string nivelNombre)
     {
-        SceneManager.LoadScene("Nivel" + nivelIndex);
+        SceneManager.LoadScene(nivelNombre);
     }
 
     public void Jugar()
