@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.51117104, g: 0.5688241, b: 0.62496424, a: 1}
+  m_IndirectSpecularColor: {r: 0.51114815, g: 0.5688079, b: 0.6249547, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -6453,7 +6453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Haz muerto
+  m_text: Has muerto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5e73ab906ce36f41a1f396cfb27c8e4, type: 2}
   m_sharedMaterial: {fileID: 3248967156070857903, guid: b5e73ab906ce36f41a1f396cfb27c8e4, type: 2}
