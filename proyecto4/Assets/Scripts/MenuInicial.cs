@@ -10,10 +10,14 @@ public class MenuInicial : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("_scene");
+    }
+
     public void Salir()
     {
         Debug.Log("Salio");
         Application.Quit();
     }
 }
-
