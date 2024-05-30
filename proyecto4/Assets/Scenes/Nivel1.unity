@@ -5006,6 +5006,14 @@ PrefabInstance:
       propertyPath: sprintingImage
       value: 
       objectReference: {fileID: 1608254995}
+    - target: {fileID: 11478776, guid: c391f12a928274acab8576bb6030641d, type: 3}
+      propertyPath: enemyTag
+      value: Dummie
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478776, guid: c391f12a928274acab8576bb6030641d, type: 3}
+      propertyPath: alertImage
+      value: 
+      objectReference: {fileID: 1268812872}
     - target: {fileID: 1820438770795212, guid: c391f12a928274acab8576bb6030641d, type: 3}
       propertyPath: m_Name
       value: _runSound
