@@ -58,7 +58,7 @@ public class EnemyAiLobo : MonoBehaviour
             if (Vector3.Distance(transform.position, agent.destination) < 1f)
             {
                 isRespondingToSound = false; // Reset when the sound point is reached
-                myAnim.SetBool("WalkForward", true); // Ensure the walking animation stops
+                //myAnim.SetBool("WalkForward", true); // Ensure the walking animation stops
             }
             return; // Skip the rest of the update while responding to sound
         }
@@ -88,11 +88,11 @@ public class EnemyAiLobo : MonoBehaviour
             if (Vector3.Angle(transform.forward, direction) < 10f)
             {
                 agent.SetDestination(walkPoint);
-                myAnim.SetBool("WalkForward", true);
+                //myAnim.SetBool("WalkForward", true);
             }
             else
             {
-                myAnim.SetBool("WalkForward", false);
+                //myAnim.SetBool("WalkForward", false);
             }
         }
 
@@ -117,7 +117,7 @@ public class EnemyAiLobo : MonoBehaviour
 
     private void ChasePlayer()
     {
-        myAnim.SetBool("WalkForward", true);
+        //myAnim.SetBool("WalkForward", true);
         
         agent.SetDestination(player.position);
 
@@ -133,11 +133,14 @@ public class EnemyAiLobo : MonoBehaviour
         // Ensure the enemy doesn't move while attacking
         agent.SetDestination(transform.position);
         transform.LookAt(player);
-        myAnim.SetTrigger("triggerAttack1"); // Activar el parámetro trigger "Attack1"
 
         if (!alreadyAttacked)
         {
-            
+            // Verificar si la animación de ataque no está corriendo
+            if (!myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+            {
+                myAnim.SetTrigger("triggerAttack1"); // Activar el parámetro trigger "Attack1"
+            }
 
             // Play attack sound with debug messages
             if (attackAudioSource != null)
@@ -194,6 +197,6 @@ public class EnemyAiLobo : MonoBehaviour
     {
         isRespondingToSound = true;
         agent.SetDestination(soundPosition);
-        myAnim.SetBool("WalkForward", true); // Make sure to play the walk animation
+        //myAnim.SetBool("WalkForward", true); // Make sure to play the walk animation
     }
 }
