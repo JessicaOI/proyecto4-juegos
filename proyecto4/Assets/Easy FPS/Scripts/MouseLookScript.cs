@@ -13,7 +13,7 @@ public class MouseLookScript : MonoBehaviour
     [Tooltip("Tag de los objetos enemigos")]
     public string enemyTag = "Bear";
     [Tooltip("Distancia máxima para activar la imagen de alerta")]
-    public float maxDistance = 30f;
+    public float maxDistance = 5f;
     [Tooltip("Referencia a la imagen de alerta en el Canvas")]
     public GameObject alertImage;
 
@@ -21,6 +21,14 @@ public class MouseLookScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         myCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        if (myCamera == null)
+        {
+            Debug.LogError("MainCamera not found. Make sure the camera is tagged as 'MainCamera'.");
+        }
+        if (alertImage == null)
+        {
+            Debug.LogError("AlertImage is not assigned. Make sure to assign the AlertImage in the Inspector.");
+        }
     }
 
     void Update()
