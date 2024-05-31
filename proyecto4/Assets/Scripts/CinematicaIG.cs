@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Playables;
+using System.Collections;
 
 public class CinematicaIG : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class CinematicaIG : MonoBehaviour
     public GameObject objectToActivate;
     public GameObject[] objectsInCinematic; // Array de objetos a destruir después de la cinemática
     public GameObject[] objectsToDeactivate; // Array de objetos a desactivar durante la cinemática
+    public GameObject textObject; // Objeto de texto a mostrar después de la cinemática
 
     private void Start()
     {
@@ -22,6 +24,15 @@ public class CinematicaIG : MonoBehaviour
         if (player == null)
         {
             Debug.LogWarning("player no está asignado.");
+        }
+
+        if (textObject != null)
+        {
+            textObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("textObject no está asignado.");
         }
     }
 
@@ -97,6 +108,19 @@ public class CinematicaIG : MonoBehaviour
             objectToActivate.SetActive(false);
             Debug.Log("Objecto desactivado: " + objectToActivate.name);
         }
+
+        // Mostrar el objeto de texto y destruirlo después de 5 segundos
+        if (textObject != null)
+        {
+            StartCoroutine(ShowAndDestroyTextObject());
+        }
+    }
+
+    private IEnumerator ShowAndDestroyTextObject()
+    {
+        textObject.SetActive(true);
+        yield return new WaitForSeconds(5);
+        Destroy(textObject);
     }
 
     private void OnCollisionEnter(Collision collision)

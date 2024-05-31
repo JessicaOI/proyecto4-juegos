@@ -27,6 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Nivel2.unity
     guid: f6171b9412f999c43944364ace41c40d
   - enabled: 1
+    path: Assets/Scenes/Cinematica4.unity
+    guid: 3294f5fc305e2cb47b400ca856f206e5
+  - enabled: 1
+    path: Assets/Scenes/Menu3.unity
+    guid: 08350673eb833474ab70362b0ba0709f
+  - enabled: 1
     path: Assets/Easy FPS/_scene.unity
     guid: 38bb0089216ab41d98ba972dc131e209
   m_configObjects: {}
