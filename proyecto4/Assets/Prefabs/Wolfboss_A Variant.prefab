@@ -201,6 +201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolfboss_A Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8914286996971816111, guid: 877dc861ccb8af54a82af8e7768fd13c, type: 3}
+      propertyPath: m_TagString
+      value: Dummie
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -263,7 +267,7 @@ MonoBehaviour:
   walkPointRange: 0
   timeBetweenAttacks: 0.4
   sightRange: 30
-  attackRange: 5.5
+  attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
   myAnim: {fileID: 0}
@@ -281,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  attackRange: 3
+  attackRange: 6
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -310,8 +314,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 4.21
-  m_Speed: 9
-  m_Acceleration: 13
+  m_Speed: 8
+  m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 110
   m_StoppingDistance: 0
